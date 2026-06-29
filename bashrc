@@ -143,11 +143,10 @@ if command -v direnv >/dev/null 2>&1; then
 fi
 
 alias flamegraph='$HOME/src/github.com/brendangregg/FlameGraph/flamegraph.pl'
-alias zola='flatpak run org.getzola.zola'
 alias omo='OPENCODE_CONFIG="$HOME/.config/opencode/omo.jsonc" opencode'
 
 lazy_load_nvm() {
-  unset -f nvm node npm npx corepack
+  unset -f nvm node npm npx pnpm corepack
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 }
@@ -157,6 +156,7 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
   node() { lazy_load_nvm; node "$@"; }
   npm() { lazy_load_nvm; npm "$@"; }
   npx() { lazy_load_nvm; npx "$@"; }
+  pnpm() { lazy_load_nvm; pnpm "$@"; }
   corepack() { lazy_load_nvm; corepack "$@"; }
 fi
 
